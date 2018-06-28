@@ -54,8 +54,3 @@
   2. saved pickle files
 
 
-
-### Presentation
-* proj4__slides_jie.pdf
-
- 
