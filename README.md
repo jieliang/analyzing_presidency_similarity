@@ -1,4 +1,8 @@
 
+
+### Project Description Slides
+* analyzing_presidency_similarity.pdf
+
 ### Data Acquisition
 
 * __web_scrape_american_presidency_raw_text.ipynb__ 
