@@ -1,0 +1,112 @@
+<html>
+  <head>
+
+	<style>
+  body {background-color: white;}
+  h1 {color: black;}
+  p {color: black; font-size: 30px;}
+  select {font-size: 30px; color: #660033; }
+  button {font-size: 30px; color: #660033;}
+
+
+</style>
+
+     </head>
+  <body style="margin:20;padding:20" >
+
+    <div style="display: flex; justify-content: center;">
+      <img src='/static/image/presidents3.jpg' style="width: 540px; height: 360px;" />
+    </div>
+
+    <br><br>
+    <h1  align="center">Similaritis Among US Presidents and Presidential Candidates</h1>
+
+
+
+<p><p><p><br>
+<p align="center">Find presidents most simlar to
+
+
+
+          <select id = 'president' name='president'>
+            <option value="Donald J. Trump">Donald J. Trump</option>
+            <option value="Barack Obama">Barack Obama</option>p
+            <option value="George W. Bush">George W. Bush</option>
+            <option value="Bernie Sanders">Bernie Sanders</option>
+            <option value="Mitt Romney">Mitt Romney</optiion>
+
+          </select>
+
+
+
+
+<p>
+
+
+  <center>  <button  id='do_it' onclick='updateScore()' class="btn btn-info btn-block"> Submit</button></center>
+
+    <p align="center">Most similar presidents are: <div id="output" style="display: flex; justify-content: center;font-size: 48px; color: green;">?</div></p>
+
+<div id="output" style="display: flex; justify-content: center;font-size: 30px; color: #660033;">
+
+    <script type='text/javascript' src="{{url_for('static', filename='js/jquery.js') }}"></script>
+
+</div>
+    <script>
+
+    function updateScore(){
+
+      const thePresident = document.getElementById('president');
+
+
+
+      const outputElement = document.getElementById('output');
+
+      const myPayload = {
+          president: thePresident.value
+        }
+
+      console.log(myPayload);
+      /*
+      console.log(JSON.stringify({
+          animalType: theAnimal.value
+        }))
+
+      console.log(JSON.stringify({
+          intake_reproductive: theIntake_reproductive.value
+        }))
+
+      console.log(JSON.stringify({
+          outcome_reproductive: theOutcome_reproductive.value
+        }))
+
+      console.log(JSON.stringify({
+          intake_health: theIntake_health.value
+        }))
+
+      console.log(JSON.stringify({
+          outcome_health: theOutcome_health.value
+        }))
+
+      */
+      $.ajax({
+        type: 'POST',
+        contentType: "application/json; charset=utf-8",
+        url: '/similar_presidents',
+        async: true,
+        data: JSON.stringify(myPayload),
+        success: (response) => {
+          outputElement.textContent = response.score;
+        },
+        error: (response) => {
+          console.log(response);
+          outputElement.textContent = 'INVALID';
+        }
+      })
+    }
+    </script>
+
+
+  </body>
+
+</html>

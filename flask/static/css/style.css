@@ -1,0 +1,22 @@
+body{
+  background-color: #6699FF;
+  font-style: roboto;
+  font-size: large;
+}
+
+h1, h2, p {
+  text-align: center;
+}
+
+
+
+.result{
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  background-color: yellow;
+  width: 66%;
+  margin: 20px auto;
+}
+
+
